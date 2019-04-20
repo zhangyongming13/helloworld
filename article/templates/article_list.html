@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>文章列表</title>
+</head>
+<body>
+    {% for article in article_list %}
+        <!--获取字典中的标题，下同 -->
+        <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
+    {% endfor %}
+    <br>
+    {% for article in article_list %}
+        <a href="/article/{{ article.pk }}">{{ article.title }}</a>
+    {% endfor %}
+</body>
+</html>

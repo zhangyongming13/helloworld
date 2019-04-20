@@ -19,3 +19,13 @@ def article(request, article_id):
     #     raise Http404('not found!')
         # return HttpResponse('<h2>DoesNotExist this page!!!</h2>')
     # return HttpResponse('<h2>article title is %s </h2><br>content is %s' % (article.title, article.content))
+
+
+def article_list(request):
+    # 利用objects.all获取对象所有元素，上面的式根据article_id获取对应新闻的属性
+    # 利用objects.filter来过滤相应的内容，下面的表示只有is_delete=False才去获取
+    get_article_list = Article.objects.filter(is_deleted=False)
+    context = {}
+    context['article_list'] = get_article_list
+    # 使用相应的模板
+    return render_to_response('article_list.html', context)
